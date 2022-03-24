@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/mua-bao-hiem-y-te-o-buu-dien", {data:[{}],fetch:{},mutations:void 0});

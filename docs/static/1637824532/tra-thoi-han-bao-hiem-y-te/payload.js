@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/tra-thoi-han-bao-hiem-y-te", {data:[{}],fetch:{},mutations:void 0});

@@ -1,4 +1,4 @@
-// const publicPath = 'https://buudienxatulap.ml'
+const publicPath = 'https://www.buudienxatulap.ga'
 export default {
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
@@ -51,12 +51,12 @@ export default {
   axios: {},
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  // build: {
-  //   publicPath,
-  // },
-  // generate: {
-  //   dir: 'docs',
-  // },
+  build: {
+    publicPath,
+  },
+  generate: {
+    dir: 'docs',
+  },
   // server: {
   //   host: '0', // default: localhost
   // },

@@ -1,1 +1,0 @@
-window.__NUXT__=(function(a){return {staticAssetsBase:"https:\u002F\u002Fbuudienxatulap.ml\u002Fstatic\u002F1637824532",layout:"default",error:null,serverRendered:true,routePath:"\u002Fmua-bao-hiem-y-te-o-buu-dien",config:{_app:{basePath:a,assetsPath:a,cdnURL:"https:\u002F\u002Fbuudienxatulap.ml\u002F"}}}}("\u002F"));

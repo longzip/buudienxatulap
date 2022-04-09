@@ -38,14 +38,14 @@
                 <li>
                   <a
                     class="text-gray-700 hover:text-gray-900 font-semibold block pb-2 text-sm"
-                    href="https://shop.buudienxatulap.ml/"
+                    href="https://shop.buudienxatulap.ga/"
                     >Cửa hàng</a
                   >
                 </li>
                 <li>
                   <a
                     class="text-gray-700 hover:text-gray-900 font-semibold block pb-2 text-sm"
-                    href="https://shop.buudienxatulap.ml/blog/"
+                    href="https://blog.buudienxatulap.ga/"
                     >Blog</a
                   >
                 </li>
@@ -88,14 +88,14 @@
                 <li>
                   <a
                     class="text-gray-700 hover:text-gray-900 font-semibold block pb-2 text-sm"
-                    href="/"
+                    href="http://hanoi.vnpost.vn/"
                     >Bưu điện Hà Nội</a
                   >
                 </li>
                 <li>
                   <a
                     class="text-gray-700 hover:text-gray-900 font-semibold block pb-2 text-sm"
-                    href="/"
+                    href="tel:0978333963"
                     >Liên hệ</a
                   >
                 </li>
@@ -147,13 +147,13 @@
     <div id="fb-customer-chat" class="fb-customerchat">
     </div>
     <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-202548383-3"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-215625598-1"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
-  gtag('config', 'UA-202548383-3');
+  gtag('config', 'UA-215625598-1');
 </script>
 <script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/03e33e3cdd5e422de02a01d6e/a349bd51a875ff4001de83a79.js");</script>
   </footer>

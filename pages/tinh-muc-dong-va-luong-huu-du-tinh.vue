@@ -122,11 +122,6 @@ Chế độ BHXH tự nguyện được quy định tại chương IV Luật BHX
                 02 điều kiện hưởng lương hưu đối với người tham gia BHXH tự nguyện
               </h3>
               <p
-                class="text-lg font-light leading-relaxed mt-4 mb-4 text-gray-700"
-              >
-                Ngoài bưu chính công ích, chuyển phát thư, báo, hàng hóa... còn phục vụ chi trả lương hưu và trợ cấp bảo hiểm xã hội (BHXH), thu bảo hiểm y tế (BHYT) cho người dân; kinh doanh hàng tiêu dùng thiết yếu.
-              </p>
-              <p
                 class="text-lg font-light leading-relaxed mt-0 mb-4 text-gray-700"
               >
                 Căn cứ vào Điều 73 Luật Bảo hiểm xã hội 2014 (sửa đổi bởi điểm c khoản 1 Điều 219 Bộ luật Lao động 2019), người tham gia BHXH tự nguyện được hưởng lương hưu khi:
@@ -273,7 +268,7 @@ Trong đó, thu nhập tháng đã đóng BHXH để làm căn cứ tính mức 
               <p class="text-lg leading-relaxed m-4 text-gray-600">
                 Khi tham gia BHXH tự nguyện được NSNN hỗ trợ hộ nghèo bằng 30%, cận nghèo là 25%, đối tượng khác là 10% (tính theo mức chuẩn hộ nghèo nông thôn).
               </p>
-              <p>
+              <p class="mb-2">
                 <select v-model="mucThuNhap">
                   <option disabled value="">Lựa chọn mức thu nhập</option>
                   <option v-for="option in options" :value="option" :key="option">
@@ -281,6 +276,11 @@ Trong đó, thu nhập tháng đã đóng BHXH để làm căn cứ tính mức 
                   </option>
                 </select>
               </p>
+              <p><span>Tổng số tiền đóng BHXH 20 năm:</span> {{tongDong20.toLocaleString()}} VNĐ</p>
+              <p><span>Số tiền gốc:</span> {{tongSoTienGoc.toLocaleString()}} VNĐ</p>
+              <p><span>Tổng số tiền cuối kỳ (lãi suất {{Math.round(this.laiSuatNganHang*100)}}%):</span> {{tongSoTienCuoiKy.toLocaleString()}} VNĐ</p>
+              <p><span>Số tiền lãi:</span> {{(tongSoTienCuoiKy-tongSoTienGoc).toLocaleString()}} VNĐ</p>
+              <p><span>Lãi hàng tháng năm sau 20 năm:</span> {{Math.round(tongSoTienCuoiKy*0.03/12).toLocaleString()}} VNĐ</p>
             </div>
           </div>
           <div class="flex flex-wrap">
@@ -323,10 +323,10 @@ Trong đó, thu nhập tháng đã đóng BHXH để làm căn cứ tính mức 
                         <div class="text-gray-500 dark:text-gray-200 text-sm">
                             / tháng
                         </div>
-                        <div class="px-4 mt-8">
-                            <button type="button" class="py-2 px-4  bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">
+                        <div class="px-4 mt-8 mb-2">
+                            <a href="/tinh-muc-dong-va-luong-huu-du-tinh/#mc-embedded-subscribe-form" class="py-2 px-4  bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">
                                 Bắt đầu
-                            </button>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -358,7 +358,7 @@ Trong đó, thu nhập tháng đã đóng BHXH để làm căn cứ tính mức 
           <div class="flex flex-wrap">
             <div v-for="item in luongHuu20Nam" :key="item.namThu" class="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4">
               <div class="px-6">
-                <div class="w-72 mx-auto bg-white border-t-4 rounded border-indigo-500 dark:bg-gray-800 shadow text-center p-4">
+                <div :class="[tongDong20<tongNamThu(item.namThu) ? 'border-indigo-500':'border-gray-500', 'w-72 mx-auto bg-white border-t-4 rounded dark:bg-gray-800 shadow text-center p-4']">
                     <div class="overflow-hidden">
                         <div class="text-2xl font-medium mb-8 text-gray-800 dark:text-white">
                             Năm {{item.namThu}}
@@ -652,6 +652,7 @@ export default {
       },
       tiLeHuong: 0.55,
       tong: 0,
+      laiSuatNganHang: 0.07,
       options: [1500000, 2000000, 2500000, 3000000, 3500000, 4000000, 4500000, 5000000, 5500000, 6000000, 6500000, 7000000, 8000000, 9000000, 10000000, 12000000, 15000000, 25000000]
     }
   },
@@ -667,6 +668,15 @@ export default {
     }
   },
   computed: {
+    tongSoTienGoc(){
+      return Math.round((this.mucThuNhap*0.22-this.mucHoTro)*12*20)
+    },
+    tongSoTienCuoiKy(){
+      return Math.round((this.mucThuNhap*0.22-this.mucHoTro)*((Math.pow(1+this.laiSuatNganHang/12,12*20+1)-(1+this.laiSuatNganHang/12))/(this.laiSuatNganHang/12)));
+    },
+    tongDong20(){
+      return (this.mucThuNhap*0.22-this.mucHoTro)*120+this.mucThuNhap*0.22*120
+    },
     bangLuaChons(){
       return [1,3,6,12].map(soThang => ({
           soThang,

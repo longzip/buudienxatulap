@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/tinh-muc-dong-va-luong-huu-du-tinh", {data:[{}],fetch:{},mutations:void 0});

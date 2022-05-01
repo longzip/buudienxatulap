@@ -70,6 +70,13 @@
                     >Tính mức đóng và lương hưu dự tính</a
                   >
                 </li>
+                <li>
+                  <a
+                    class="text-gray-700 hover:text-gray-900 font-semibold block pb-2 text-sm"
+                    href="/bao-hiem-bat-buoc-oto-xe-may/"
+                    >Bảo hiểm bắt buộc ô tô, xe máy: quyền lợi vượt trội phí mua</a
+                  >
+                </li>
               </ul>
             </div>
             <div class="w-full lg:w-4/12 px-4">
@@ -106,6 +113,13 @@
                     >Liên hệ</a
                   >
                 </li>
+                <li>
+                  <a
+                    class="text-gray-700 hover:text-gray-900 font-semibold block pb-2 text-sm"
+                    href="/tim-kiem-ma-giam-gia/"
+                    >Tìm kiếm mã giảm giá</a
+                  >
+                </li>
               </ul>
             </div>
           </div>
@@ -117,11 +131,11 @@
       >
         <div class="w-full md:w-4/12 px-4 mx-auto text-center">
           <div class="text-sm text-gray-600 font-semibold py-1">
-            Copyright © {{date}} Bưu điện văn hóa xã Tự Lập by
+            Copyright © {{date}} Bưu điện văn hóa xã Tự Lập. Thiết kế website hiện đại cùng
             <a
               href="https://lovanlong.ga/"
               class="text-gray-600 hover:text-gray-900"
-              >Thiết kế website tại Vĩnh Phúc</a
+              >Lỗ Văn Long</a
             >.
           </div>
         </div>

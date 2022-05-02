@@ -69,7 +69,11 @@
                                 </p>
                             </div>
                             <div class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
-                                {{ bhyt.denNgayDt | soNgay}}
+                                <div class="flex-col items-center px-5">
+                                    <div class="mb-5">{{ bhyt.denNgayDt | soNgay}}</div>
+                                <a v-if="!isConHan(bhyt.denNgayDt)" href="tel:0978333963" class="bg-gray-300 hover:bg-gray-400 text-green-500 font-bold py-2 px-4 rounded inline-flex items-center">Mua ngay</a>
+                                </div>
+                                
                             </div>
                         </div>
                     </li>
@@ -94,7 +98,10 @@ export default {
     methods:{
         async timKiem() {
             if(!this.searchText) return;
-            this.dsBhyts = await fetch(`https://cmsbudientulap.herokuapp.com/api/bhyts?&name=${this.searchText}`).then(res =>
+            const name = this.searchText.split(" ").map(value => value.charAt(0).toUpperCase() + value.slice(1)).join(" ");
+            const regex = /[0-9]/g;
+            const maSo = this.searchText.match(regex);
+            this.dsBhyts = await fetch(`https://cmsbudientulap.herokuapp.com/api/bhyts?&name=${maSo ? maSo.join("") : name}`).then(res =>
                 res.json()
             );
         },
@@ -103,6 +110,13 @@ export default {
             const diffTime = (new Date(value) - new Date());
             console.log(Math.ceil(diffTime / (1000 * 60 * 60 * 24)) > 30);
             return Math.ceil(diffTime / (1000 * 60 * 60 * 24)) > 30;
+        }
+    },
+    mounted(){
+        if (this.$route.query.q) {
+            const q = this.$route.query.q;
+            this.searchText = q;
+            this.timKiem(q);
         }
     },
     filters: {
@@ -120,7 +134,7 @@ export default {
         soNgay(value){
             if (!value) return ''
             const diffTime = (new Date(value) - new Date());
-            return Math.ceil(diffTime / (1000 * 60 * 60 * 24)) + ' ngày';
+            return (diffTime < 0 ? 'Đã hết ' : 'Còn ') + Math.ceil(diffTime / (1000 * 60 * 60 * 24)) + ' ngày';
         }
     }
 }

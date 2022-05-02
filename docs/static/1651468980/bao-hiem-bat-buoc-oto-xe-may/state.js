@@ -1,1 +1,0 @@
-window.__NUXT__=(function(a){return {staticAssetsBase:"https:\u002F\u002Fwww.buudienxatulap.ga\u002Fstatic\u002F1651468980",layout:"default",error:null,serverRendered:true,routePath:"\u002Fbao-hiem-bat-buoc-oto-xe-may",config:{_app:{basePath:a,assetsPath:a,cdnURL:"https:\u002F\u002Fwww.buudienxatulap.ga\u002F"}}}}("\u002F"));

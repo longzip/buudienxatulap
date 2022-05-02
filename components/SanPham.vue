@@ -1,5 +1,8 @@
 <template>
     <section class="pt-20 pb-48">
+      <div class="container mx-auto px-4">
+        <div class="zalo-comment-plugin" data-appid="4012174264882708298" data-size="5" data-href=""></div>
+      </div>
         <div class="container mx-auto px-4">
           <div class="flex flex-wrap justify-center text-center mb-24">
             <div class="w-full lg:w-6/12 px-4">

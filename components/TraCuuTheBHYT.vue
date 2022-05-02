@@ -26,8 +26,8 @@
                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
                     Họ tên:
                 </label>
-                <input v-model="searchText" @keydown.enter="timKiem()" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="Lỗ Văn Long">
-                <p class="text-red-500 text-xs italic mb-5">Hãy nhập một loại thông tin cần tra cứu như mã số thẻ, họ tên, số điện thoại của bạn.</p>
+                <input v-model="searchText" @keydown.enter="timKiem()" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="Tên">
+                <p class="text-red-500 text-xs italic mb-5">Có thể tìm theo số điện thoại, mã số thẻ BHYT hoặc tên.</p>
                 <div class="flex items-center justify-between ">
                     <button @click="timKiem()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
                         Tra cứu
@@ -41,13 +41,8 @@
                 <ul v-for="bhyt in dsBhyts" :key="bhyt.maSoBhxh"  class="divide-y divide-gray-200 dark:divide-gray-700 mt-10">
                     
                     <li :class="[bhyt.coTheUuTienCaoHon ? 'bg-yellow-100 border-yellow-500': isConHan(bhyt.denNgayDt) ? 'bg-green-100 border-green-500' : 'bg-gray-100 border-gray-500','py-3 sm:py-4 border-t-4 rounded mb-5 shadow']">
-                        <div class="flex items-center space-x-4">
-                            <div class="flex-shrink-0">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M13 9l3 3m0 0l-3 3m3-3H8m13 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                </svg>
-                            </div>
-                            <div class="flex-1 min-w-0">
+                        <div class="flex-col items-center space-x-4">
+                            <div class="min-w-0 mx-5 mb-5">
                                 <p class="text-sm font-medium text-gray-900 dark:text-white text-xl text-bold mb-2">
                                     {{bhyt.hoTen}}
                                     {{bhyt.ngaySinhDt | ngayThang}}
@@ -68,12 +63,9 @@
                                     Ngày 5 năm liên tục: {{bhyt.ngay5Nam | ngayThangString}}
                                 </p>
                             </div>
-                            <div class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
-                                <div class="flex-col items-center px-5">
-                                    <div class="mb-5">{{ bhyt.denNgayDt | soNgay}}</div>
-                                <a v-if="!isConHan(bhyt.denNgayDt)" href="tel:0978333963" class="bg-gray-300 hover:bg-gray-400 text-green-500 font-bold py-2 px-4 rounded inline-flex items-center">Mua ngay</a>
-                                </div>
-                                
+                            <div class="flex items-center justify-between text-base font-semibold text-gray-900 dark:text-white">
+                                <div>{{ bhyt.denNgayDt | soNgay}}</div>
+                                <a v-if="!isConHan(bhyt.denNgayDt)" href="tel:0978333963" class="mr-5 bg-gray-300 hover:bg-gray-400 text-green-500 font-bold py-2 px-4 rounded inline-flex items-center">Mua ngay</a>
                             </div>
                         </div>
                     </li>
@@ -134,7 +126,7 @@ export default {
         soNgay(value){
             if (!value) return ''
             const diffTime = (new Date(value) - new Date());
-            return (diffTime < 0 ? 'Đã hết ' : 'Còn ') + Math.ceil(diffTime / (1000 * 60 * 60 * 24)) + ' ngày';
+            return (diffTime < 0 ? 'Đã hết ' : 'Còn ') + Math.abs(Math.ceil(diffTime / (1000 * 60 * 60 * 24))) + ' ngày';
         }
     }
 }

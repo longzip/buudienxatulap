@@ -16,6 +16,7 @@ export default {
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: '' },
+      { hid: 'zalo-platform-site-verification', name: 'zalo-platform-site-verification', content: 'JjQ5CPpWKsX8_lWqlz1N36F3nYEFiXnyDpO' },
       { name: 'format-detection', content: 'telephone=no' }
     ],
     link: [

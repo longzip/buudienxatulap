@@ -1,0 +1,1 @@
+__NUXT_JSONP__("manifest.js", {routes:["\u002F","\u002Fmua-bao-hiem-y-te-o-buu-dien","\u002Ftinh-muc-dong-va-luong-huu-du-tinh","\u002Ftra-cuu-hang-buu-dien","\u002Ftra-thoi-han-bao-hiem-y-te","\u002Ftim-kiem-ma-giam-gia","\u002Fbao-hiem-bat-buoc-oto-xe-may"]})

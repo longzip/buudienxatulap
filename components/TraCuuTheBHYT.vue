@@ -45,7 +45,7 @@
                             <div class="min-w-0 mx-5 mb-5">
                                 <p class="text-sm font-medium text-gray-900 dark:text-white text-xl text-bold mb-2">
                                     {{bhyt.hoTen}}
-                                    {{bhyt.ngaySinhDt | ngayThang}}
+                                    {{bhyt.ngaySinhDt | namSinh}}
                                 </p>
                                 <p class="text-sm text-gray-500 dark:text-gray-400">
                                     Số thẻ BHYT: {{bhyt.soTheBhyt}}
@@ -97,6 +97,11 @@ export default {
                 res.json()
             );
         },
+        async getTaiTuc(){
+            this.dsBhyts = await fetch("https://cmsbudientulap.herokuapp.com/api/bhyts?thang=2&taiTuc=1&completed=0&disabled=0").then(res =>
+                res.json()
+            );
+        },
         isConHan(value){
             if(!value) return false;
             const diffTime = (new Date(value) - new Date());
@@ -110,11 +115,18 @@ export default {
             this.searchText = q;
             this.timKiem(q);
         }
+        else{
+            this.getTaiTuc();
+        }
     },
     filters: {
         ngayThang: function (value) {
             if (!value) return ''          
             return new Date(value).toLocaleDateString();
+        },
+        namSinh: function (value) {
+            if (!value) return ''          
+            return new Date(value).toISOString().slice(0,4);
         },
         ngayThangString: function (value) {
             if (!value) return ''

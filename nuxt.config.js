@@ -1,4 +1,4 @@
-const publicPath = 'https://www.buudienxatulap.ga'
+const publicPath = 'https://thambuudien.ga'
 export default {
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
